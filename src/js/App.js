@@ -1,5 +1,5 @@
-import { ShowCase } from "./main/ShowCase";
-import { Modal } from "./utility/Modal";
+import { Main } from "./main/Main";
+import { Modal } from "./common/Modal";
 // import { Footer } from "../footer/Footer";
 // import { Header } from "../header/Header";
 
@@ -21,8 +21,8 @@ class App {
   bindEvents() {
     this.hideModal();
     window.addEventListener("keydown", (e) => {
-      this.showCase.updateKeyCode(e);
-      this.showCase.updateKeyCards(e);
+      this.main.updateKeyCode(e);
+      this.main.updateKeyCards(e);
     });
   }
 
@@ -33,9 +33,9 @@ class App {
 
   hideModal() {
     const handler = (e) => {
-      this.showCase = new ShowCase(this.$el.querySelector("#main"), "showCase");
-      this.showCase.render();
-      this.showCase.fetchCards();
+      this.main = new Main(this.$el.querySelector("#main"), "main");
+      this.main.render();
+      this.main.fetchCards();
 
       this.Modal.setState(false);
       window.removeEventListener("keydown", handler);
@@ -44,23 +44,4 @@ class App {
   }
 }
 
-// this.Modal = new Modal("modal");
-// new Message(".modal", "modal__message", "Press any key to get the keyCode");
-
-// this.init();
-
-// init() {
-// this.updateKeyCode();
-// this.hideBackDrop();
-// }
-
-// hideBackDrop() {
-// const Modal = this.Modal; // to solve bind issue in addEventListener
-// async function hideBackDropHandler(e) {
-// await Modal.hide(); // async 1 second
-// window.removeEventListener("keydown", hideBackDropHandler);
-// }
-//
-// window.addEventListener("keydown", hideBackDropHandler);
-// }
 const app = new App();

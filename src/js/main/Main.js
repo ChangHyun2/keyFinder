@@ -1,6 +1,6 @@
 import { KeyCard } from "./KeyCard";
 
-export class ShowCase {
+export class Main {
   constructor($parent, className) {
     this.$parent = $parent;
     this.className = className;

@@ -1,4 +1,4 @@
-import { Tooltip } from "../utility/Tooltip";
+import { Tooltip } from "../common/Tooltip";
 
 export class KeyCard {
   constructor($parent, className, title, content = "") {

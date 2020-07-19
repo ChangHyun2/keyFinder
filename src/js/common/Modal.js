@@ -1,4 +1,4 @@
-import setTimer from "./setTimer";
+import setTimer from "../utility/setTimer";
 
 export class Modal {
   constructor($parent = document.body, className, contentHTML) {

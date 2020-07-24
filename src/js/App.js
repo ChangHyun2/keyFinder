@@ -7,6 +7,7 @@ class App {
   constructor() {
     this.render();
     this.Modal = this.paragraphModal();
+    this.main;
     this.bindEvents();
   }
 
@@ -18,8 +19,9 @@ class App {
       <footer id="footer"></footer>
       `;
   }
+
   bindEvents() {
-    this.hideModal();
+    this.hideModalOnKeyDown();
     window.addEventListener("keydown", (e) => {
       this.main.updateKeyCode(e);
       this.main.updateKeyCards(e);
@@ -28,14 +30,26 @@ class App {
 
   paragraphModal() {
     const paragraph = `<p class="modal__message">Enter any key to get keyCode</p>`;
-    return new Modal(this.$el, "modal", paragraph);
+    return new Modal({
+      parent: this.$el,
+      classes: "modal",
+      contentHTML: paragraph,
+    });
   }
 
-  hideModal() {
+  hideModalOnKeyDown() {
     const handler = (e) => {
-      this.main = new Main(this.$el.querySelector("#main"), "main");
+      this.main = new Main({
+        $parent: this.$el.querySelector("#main"),
+        classes: {
+          main: "main",
+          keyCode: "keyCode",
+          keyCards: "keyCards",
+        },
+      });
+      console.log(this);
       this.main.render();
-      this.main.fetchCards();
+      this.main.fetchKeyCards();
 
       this.Modal.setState(false);
       window.removeEventListener("keydown", handler);

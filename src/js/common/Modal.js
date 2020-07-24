@@ -1,22 +1,21 @@
+import { Component } from "./Component";
 import setTimer from "../utility/setTimer";
 
-export class Modal {
-  constructor($parent = document.body, className, contentHTML) {
-    this.$parent = $parent;
-    this.className = className;
+export class Modal extends Component {
+  constructor(config) {
+    const { $parent = document.body, classes = "modal", contentHTML } = config;
+
+    super("div", { $parent, classes, position: "afterbegin" });
+
     this.isOn = true;
     this.contentHTML = contentHTML;
+
     this.render();
   }
 
   async render() {
     if (this.isOn) {
-      if (!this.$el) {
-        this.$el = document.createElement("div");
-        this.$el.className = this.className;
-      }
       this.$el.innerHTML = this.contentHTML;
-      document.body.insertAdjacentElement("afterbegin", this.$el);
     } else {
       this.$el.classList.add("modal--fade");
       await setTimer(1000);

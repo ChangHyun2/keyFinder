@@ -1,18 +1,16 @@
-export class Tooltip {
-  constructor($parent, className, text) {
-    this.$parent = $parent;
-    this.className = className;
+import { Component } from "./Component";
+
+export class Tooltip extends Component {
+  constructor(config) {
+    const { $parent, classes = "tooltip", text = "" } = config;
+    super("p", { $parent, classes });
+
     this.text = text;
     this.render();
   }
 
   render() {
-    if (!this.$el) {
-      this.$el = document.createElement("p");
-      this.$el.className = this.className;
-    }
     this.$el.textContent = this.text;
-    this.$parent.append(this.$el);
   }
 
   setState(text) {

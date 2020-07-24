@@ -226,3 +226,8 @@ javascript: (function() {
             * * * * * * * * * { background-color: rgba(0,0,255,.2) !important; }</style>';
 	}
 })();
+
+## 깃 명령어
+
+최근 커밋으로 돌리는 방법
+- 원하는 커밋으로 

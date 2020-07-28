@@ -25,7 +25,7 @@ export class Main extends Component {
   }
 
   fetchKeyCards() {
-    const titles = ["key", "keyCode", "code"];
+    const titles = ["e.key", "e.keyCode", "e.code"];
     const config = {
       $parent: this.$el.querySelector(".keyCards"),
       removeClipboardPopups: this.removeClipboardPopups.bind(this),

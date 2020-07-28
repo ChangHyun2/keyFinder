@@ -10,7 +10,6 @@ export class Component {
 
   setConfig(classes, attributes) {
     if (typeof classes === "string") {
-      console.log(classes);
       this.$el.className = classes;
     }
 

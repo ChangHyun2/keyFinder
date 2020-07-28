@@ -1,12 +1,22 @@
 import { Main } from "./main/Main";
 import { Modal } from "./common/Modal";
+import { Header } from "./header/Header";
 // import { Footer } from "../footer/Footer";
 // import { Header } from "../header/Header";
 
 class App {
   constructor() {
     this.render();
-    this.Modal = this.paragraphModal();
+
+    this.modal = this.paragraphModal();
+
+    const headerConfig = {
+      $parent: this.$el.querySelector("#header"),
+      classes: "header",
+    };
+    this.header = new Header(headerConfig);
+    this.header.getToggler(this.modal); // target : this.modal
+
     this.main;
     this.bindEvents();
   }
@@ -51,7 +61,7 @@ class App {
       this.main.render();
       this.main.fetchKeyCards();
 
-      this.Modal.setState(false);
+      this.modal.setState(false);
       window.removeEventListener("keydown", handler);
     };
     window.addEventListener("keydown", handler);
